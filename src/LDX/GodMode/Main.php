@@ -14,9 +14,9 @@ class Main extends PluginBase implements Listener {
     $this->enabled = array();
     $this->getServer()->getPluginManager()->registerEvents($this,$this);
   }
-  public function onCommand(CommandSender $issuer,Command $cmd,$label,array $args) {
+  public function onCommand(CommandSender $issuer,Command $cmd,string $label,array $args) : bool {
     if((strtolower($cmd->getName()) == "god") && !(isset($args[0])) && ($issuer instanceof Player) && ($issuer->hasPermission("godmode.toggle") || $issuer->hasPermission("godmode.toggle.self"))) {
-      $this->enabled[$issuer->getName()] = !$this->enabled[$issuer->getName()];
+      $this->enabled[$issuer->getName()] = !($this->enabled[$issuer->getName()] ?? false);
       if($this->enabled[$issuer->getName()]) {
         $issuer->sendMessage("God mode enabled!");
       } else {
