@@ -1,0 +1,2 @@
+# GodMode
+A PocketMine plugin
